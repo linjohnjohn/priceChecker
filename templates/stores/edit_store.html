@@ -1,0 +1,30 @@
+ {% extends "base.html" %}
+{% block body %}
+	<div class="page-header">
+		<h1>Edit Store</h1>
+	</div>
+	<div class="form-size">
+		<form method='post'>
+			<div class="form-group">
+				<label for="name">Store Name</label>
+				<input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{store.name}}">
+			</div>
+			<div class="form-group">
+				<label for="url_prefix">URL Prefix</label>
+				<input type="text" class="form-control" id="url_prefix" name="url_prefix" placeholder="http://..." value="{{store.url_prefix}}" aria-describedby="url_prefix_block">
+				<p id="url_prefix_block" class="help-block">All items from this store should start with this prefix</p>
+			</div>
+
+			<div class="form-group">
+				<label for="tag_name">Tag Name</label>
+				<input type="text" class="form-control" id="tag_name" name="tag_name" placeholder="span" value="{{store.tag_name}}" aria-describedby="tag_name_block">
+				<p id="tag_name_block" class="help-block">What is the HTML tag of the item that contains the item price (usually <code>span</code>)</p>
+			</div>
+			<div class="form-group">
+				<label for="query">Search Query</label>
+				<input type="text" class="form-control" id="query" name="query" placeholder='{"id": "price-now"}' value='{{store.query|tojson}}' aria-describedby="query_block">
+				<p id="query_block" class="help-block">What JSON query would we have to do to find the price. Remember to use double quotation marks!</p>
+			<button class="btn btn-warning"> Edit </button>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block body %}
+	<div class="page-header">
+		<h1>Stores List</h1>
+		<div class="list-group">
+		{% for store in stores %}
+			<a class="list-group-item" href="{{url_for('stores.store_page', store_id=store._id)}}">
+			<h4 class="list-group-item-title">{{store.name}}</h4>
+			<p class="list-group-item-text">
+			{{store.url_prefix}}</p>
+			</a>
+		{% endfor %}
+		</div>
+	</div>
+	{% if session['email'] in config.ADMINS %}
+	<a class="btn btn-success" href="{{url_for('stores.create_store')}}"><span class="glyphicon glyphicon-plus"></span> Add a Store</a>
+	{% endif %}
+{% endblock %}

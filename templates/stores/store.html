@@ -1,0 +1,16 @@
+ {% extends "base.html" %}
+{% block body %}
+	<div class="page-header">
+		<h2>Store {{store.name}}</h2>
+		<p>All URLs from this store start with {{store.url_prefix}}</p>
+	</div>
+	{% if session['email'] in config.ADMINS %}
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<a class="btn btn-warning" href="{{url_for('stores.edit_store', store_id=store._id)}}">Edit</a>
+			<a class="btn btn-danger" href="{{url_for('stores.delete_store', store_id=store._id)}}">Delete</a>
+		</div>
+
+	</div>
+	{% endif %}
+{% endblock %}
